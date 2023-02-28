@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <title>Frontend Mentor | Rock, Paper, Scissors</title>
+  </head>
+  <body>
+    <main id="SelectGame">
+      <h1>CHOOSE THE GAME</h1>
+      <section id="RPS">
+        <img src="images/icon-scissors.svg" alt="Original Game">
+        <img src="images/logo.svg" alt="select" class="hoverName">
+      </section>
+      <section id="LPRSS">
+        <img src="images/icon-spock.svg" alt="Bonus Game">
+        <img src="images/logo-bonus.svg" alt="select" class="hoverName">
+      </section>
+    </main>
+    <main id="original">
+      <section id="headSec">
+        <img src="images/logo.svg" alt="logo" />
+        <div id="scoreBoard">
+          <p>SCORE</p>
+          <div id="scoreNum">0</div>
+        </div>
+      </section>
+      <section id="selectMove">
+        <div id="paper" class="ring" onclick="fun1(this)">
+          <div class="innerRing">
+            <img src="images/icon-paper.svg" alt="paper" />
+          </div>
+        </div>
+        <div id="scissor" class="ring" onclick="fun1(this)">
+          <div class="innerRing">
+            <img src="images/icon-scissors.svg" alt="scissor" />
+          </div>
+        </div>
+        <div id="rock" class="ring" onclick="fun1(this )">
+          <div class="innerRing">
+            <img src="images/icon-rock.svg" alt="Rock" />
+          </div>
+        </div>
+      </section>
+      <section id="gameActive">
+        <div id="userPick">
+          <p>YOU PICKED</p>
+        </div>
+        <div id="Result">
+          <p></p>
+          <button id="playAgain">PLAY AGAIN</button>
+          
+        </div>
+        <div id="compPick">
+          <p>THE HOUSE PICKED</p>
+        </div>
+      </section>
+    </main>
+    <main id="bonus">
+      <section id="bonusHeadSec">
+        <img src="images\logo-bonus.svg" alt="logo" />
+        <div id="B_scoreBoard">
+          <p>SCORE</p>
+          <div id="B_scoreNum">0</div>
+        </div>
+      </section>
+      <section id="bonusSelectMove">
+        <div id="B_scissor" class="B_ring" onclick="fun2(this)">
+          <div class="innerRing">
+            <img src="images/icon-scissors.svg" alt="scissor" />
+          </div>
+        </div>
+        <div id="B_spock" class="B_ring" onclick="fun2(this)">
+          <div class="innerRing">
+            <img src="images/icon-spock.svg" alt="spock" />
+          </div>
+        </div>
+        <div id="B_paper" class="B_ring" onclick="fun2(this)">
+          <div class="innerRing">
+            <img src="images/icon-paper.svg" alt="paper" />
+          </div>
+        </div>
+        <div id="B_lizard" class="B_ring" onclick="fun2(this)">
+          <div class="innerRing">
+            <img src="images/icon-lizard.svg" alt="lizard" />
+          </div>
+        </div>
+        <div id="B_rock" class="B_ring" onclick="fun2(this )">
+          <div class="innerRing">
+            <img src="images/icon-rock.svg" alt="Rock" />
+          </div>
+        </div>
+      </section>
+      <section id="BgameActive">
+        <div id="BuserPick">
+          <p>YOU PICKED</p>
+        </div>
+        <div id="bonusResult">
+          <p></p>
+          <button id="bonusplayAgain">PLAY AGAIN</button>
+        </div>
+        <div id="BcompPick">
+          <p>THE HOUSE PICKED</p>
+        </div>
+      </section>
+    </main>
+    <button id="ruleBtn">RULES</button>
+    <main id="ruleSec">
+      <div id="rules">
+        <p>RULES</p>
+         <img src="images\image-rules-bonus.svg" alt="#rules" />
+         <img src="images\icon-close.svg" alt="cross" id="close" />
+      </div>
+    </main>
+
+    <div class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by <a href="https://www.frontendmentor.io/profile/Vatukah">Anupam Kumar</a>.
+      <img src="./images/favicon-32x32.png" alt="icon" />
+    </div>
+    <div id="home">
+      <img src="./kindpng_765501.png" alt="HOME">
+    </div>
+    <script src="index.js" defer></script>
+  </body>
+</html>

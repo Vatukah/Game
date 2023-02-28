@@ -1,0 +1,751 @@
+@font-face {
+  font-family: "Barlow Semi Condensed";
+  src: url("BarlowSemiCondensed-Regular.ttf");
+}
+@font-face {
+  font-family: "Barlow Semi Condensed ExtraB";
+  src: url("BarlowSemiCondensed-ExtraBoldItalic.ttf");
+}
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Barlow Semi Condensed", sans-serif;
+}
+
+#SelectGame {
+  width: 60vw;
+  height: 70vh;
+  margin: 15vh auto;
+  background: radial-gradient(
+    circle at 50% 0%,
+    hsl(214, 47%, 23%),
+    hsl(237, 49%, 15%)
+  );
+  padding: 10px;
+  box-sizing: border-box;
+  box-shadow: 4px 6px 9px 1px rgb(58, 58, 58);
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 100px 1fr;
+  justify-content: center;
+  align-items: center;
+}
+#SelectGame h1 {
+  font-size: 48px;
+  grid-column: span 2;
+  place-self: center center;
+  color: aliceblue;
+}
+#RPS,
+#LPRSS {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  background: radial-gradient(hsl(51, 100%, 62%), hsl(40, 84%, 53%));
+  overflow: hidden;
+  position: relative;
+}
+#LPRSS {
+  background: radial-gradient(hsl(189, 96%, 73%), hsl(189, 57%, 43%));
+}
+#RPS :nth-child(1),
+#LPRSS :nth-child(1) {
+  width: 40%;
+  height: 40%;
+  margin: 30%;
+}
+#SelectGame .hoverName {
+  width: 50%;
+  height: 55%;
+  position: absolute;
+  bottom: -999px;
+  left: 0px;
+  transition: bottom 0.5s;
+  padding: 210px 210px 0px 10px;
+  background: rgba(128, 128, 128, 0.164);
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+}
+#RPS:hover .hoverName,
+#LPRSS:hover .hoverName {
+  bottom: 0px;
+  left: 0px;
+}
+.attribution {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  top: 20px;
+  right: 20px;
+  font-size: 16px;
+  font-weight: 600;
+  background: rgb(34, 33, 33);
+  box-sizing: border-box;
+  padding-left: 5px;
+  transition: width 0.4s;
+  text-align: left;
+  color: transparent;
+  overflow: hidden;
+  border-radius: 100%;
+  box-shadow: 0px 0px 4px 4px skyblue;
+  animation: blink 2s linear infinite alternate;
+}
+@keyframes blink {
+  from {
+    box-shadow: 0px 0px 4px 4px skyblue;
+  }
+  to {
+    box-shadow: 0px 0px 0px 0px skyblue;
+  }
+}
+.attribution a {
+  color: hsl(228, 96%, 66%);
+}
+.attribution img {
+  position: absolute;
+  margin: 4px;
+  right: 0px;
+  top: 0px;
+}
+.attribution:hover {
+  width: 31%;
+  border-radius: 20px;
+  color: white;
+  padding-top: 12px;
+  padding-right: 40px;
+}
+#original {
+  width: 100%;
+  height: 100vh;
+  padding: 50px;
+  display: none;
+  background: radial-gradient(
+    circle at 50% 0%,
+    hsl(214, 47%, 23%),
+    hsl(237, 49%, 15%)
+  );
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+}
+#headSec,
+#bonusHeadSec {
+  width: 56%;
+  height: 154px;
+  margin: 0px auto 0px auto;
+  padding: 15px 25px;
+  border: 3px solid hsl(217, 16%, 45%);
+  border-radius: 18px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#scoreBoard,
+#B_scoreBoard {
+  width: 150px;
+  height: 120px;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: white;
+  font-weight: 600;
+  letter-spacing: 2px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+#scoreBoard p,
+#B_scoreBoard p {
+  color: hsl(229, 64%, 46%);
+  font-size: small;
+}
+#scoreBoard div,
+#B_scoreBoard div {
+  color: hsl(229, 25%, 31%);
+  width: 100%;
+  font-weight: 700;
+  font-size: 58px;
+}
+#selectMove {
+  width: 50%;
+  height: 466px;
+  margin: 50px auto 0px auto;
+  padding: 0px 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  justify-items: center;
+  align-items: center;
+  background-image: url(images/bg-triangle.svg);
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  box-sizing: border-box;
+}
+#ruleBtn {
+  width: 130px;
+  height: 42px;
+  position: absolute;
+  right: 30px;
+  bottom: 30px;
+  border: 1px solid white;
+  border-radius: 8px;
+  background: transparent;
+  font-weight: 700;
+  color: white;
+  letter-spacing: 2px;
+  display: none;
+}
+.ring,
+.B_ring {
+  width: 200px;
+  height: 200px;
+  padding: 12.5%;
+  background-color: rgb(179, 92, 92);
+  box-sizing: border-box;
+  border-radius: 100%;
+  z-index: 9;
+}
+.innerRing {
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+  background-color: hsl(0deg 0% 89%);
+  box-shadow: inset 0px 12px 0px -4px hsl(228deg 22% 78%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.innerRing img {
+  width: 45%;
+}
+#rock {
+  margin-left: 100%;
+  background: -webkit-radial-gradient(hsl(349, 71%, 52%), hsl(349, 70%, 56%));
+  box-shadow: inset 0px -12px 0px -4px hsl(348deg 75% 35%);
+}
+#scissor {
+  background: -webkit-radial-gradient(hsl(39, 89%, 49%), hsl(40, 84%, 53%));
+  box-shadow: inset 0px -12px 0px -4px hsl(28deg 76% 44%);
+}
+#paper {
+  background: -webkit-radial-gradient(hsl(230, 89%, 62%), hsl(230, 89%, 65%));
+  box-shadow: inset 0px -12px 0px -4px hsl(229deg 65% 46%);
+}
+/*rules designing*/
+#ruleSec {
+  width: 100%;
+  height: 100vh;
+  display: none;
+  position: absolute;
+  background: radial-gradient(
+    circle at 50% 0%,
+    rgba(0, 0, 0, 0.5),
+    rgba(0, 0, 0, 0.5)
+  );
+  top: 0px;
+  left: 0px;
+  z-index: 12;
+}
+#rules {
+  background-color: hsl(0deg 0% 100%);
+  width: 390px;
+  height: 410px;
+  padding: 40px 30px;
+  border-radius: 10px;
+  box-sizing: border-box;
+  position: fixed;
+  text-align: center;
+  left: 500px;
+  top: 185px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 9;
+}
+#rules p {
+  text-align: left;
+  font-size: x-large;
+  font-weight: 700;
+  color: hsl(229, 25%, 31%);
+}
+#rules img {
+  margin-top: auto;
+  align-self: center;
+}
+#close {
+  position: absolute;
+  margin-top: 0px;
+  right: 30px;
+  top: 40px;
+  width: 20px;
+  height: 20px;
+}
+#gameActive,
+#BgameActive {
+  min-width: 56%;
+  max-width: fit-content;
+  height: 400px;
+  margin: 70px auto 0px auto;
+  padding: 0px 15px;
+  box-sizing: border-box;
+  display: none;
+  justify-content: space-between;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  color: white;
+  position: relative;
+}
+#gameActive p,
+#BgameActive p {
+  margin-bottom: auto;
+}
+
+#gameActive .ring,
+#BgameActive .B_ring {
+  width: 300px;
+  height: 300px;
+  padding: 12.5%;
+  margin-top: auto;
+  margin-left: unset;
+  animation: arrival 0.5s linear;
+}
+@keyframes arrival {
+  0% {
+    transform: scale(2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+#userPick,
+#BuserPick {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#compPick,
+#BcompPick {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: url("circle225.png") no-repeat;
+  background-size: 225px;
+  background-position: 0px 140px;
+  
+}
+
+
+#Result,
+#bonusResult {
+  display: none;
+  align-self: center;
+  text-align: center;
+  font-size: 52px;
+  font-weight: 900;
+  z-index: 9;
+}
+#Result button,
+#bonusResult button {
+  outline: none;
+  width: 220px;
+  height: 50px;
+  margin: 25px 50px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 3px;
+}
+#Result button:hover {
+  color: rgb(209 61 91);
+  cursor: pointer;
+}
+#bonusResult button:hover {
+  color: rgb(209 61 91);
+  cursor: pointer;
+}
+#home {
+  display: none;
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  top: 20px;
+  left: 20px;
+  background-color: transparent;
+  border: 1px solid whitesmoke;
+  overflow: hidden;
+  border-radius: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  cursor: pointer;
+}
+#home:hover {
+  background-color: whitesmoke;
+}
+#home img {
+  width: 80%;
+  height: 80%;
+}
+#glow {
+  display: block;
+  width: 600px;
+  height: 600px;
+  background: -webkit-radial-gradient(
+    hsl(218, 4%, 58%) 10%,
+    hsl(221, 51%, 89%) 60%
+  );
+  opacity: 0.1;
+  border-radius: 100%;
+  position: absolute;
+  
+ 
+  transition: all ease-in-out;
+  animation: glow linear 0.5s infinite alternate;
+}
+@keyframes glow {
+  from {
+    background: -webkit-radial-gradient(
+      hsl(216, 2%, 44%) 10%,
+      hsl(222, 7%, 50%) 60%
+    );
+  }
+  to {
+    background: -webkit-radial-gradient(
+      hsl(213, 11%, 84%) 10%,
+      hsl(0, 0%, 100%) 60%
+    );
+  }
+}
+
+/* bonus */
+#bonus {
+  width: 100%;
+  height: 100vh;
+  padding: 50px;
+  display: none;
+  background: radial-gradient(
+    circle at 50% 0%,
+    hsl(214, 47%, 23%),
+    hsl(237, 49%, 15%)
+  );
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+}
+#bonusSelectMove {
+  width: 50%;
+  height: 466px;
+  margin: 25px auto 0px auto;
+  padding: 0px 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+
+  justify-items: center;
+  align-items: center;
+  background-image: url("images/bg-pentagon.svg");
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  box-sizing: border-box;
+}
+.B_ring {
+  width: 140px;
+  height: 140px;
+  padding: 20px;
+}
+.B_ring .innerRing {
+  width: 100%;
+  margin: 0;
+}
+
+#B_rock {
+  background: -webkit-radial-gradient(hsl(349, 71%, 52%), hsl(349, 70%, 56%));
+  box-shadow: inset 0px -12px 0px -4px hsl(348deg 75% 35%);
+}
+#B_scissor {
+  background: -webkit-radial-gradient(hsl(39, 89%, 49%), hsl(40, 84%, 53%));
+  box-shadow: inset 0px -12px 0px -4px hsl(28deg 76% 44%);
+}
+#B_paper {
+  background: -webkit-radial-gradient(hsl(230, 89%, 62%), hsl(230, 89%, 65%));
+  box-shadow: inset 0px -12px 0px -4px hsl(229deg 65% 46%);
+}
+#B_spock {
+  background: -webkit-radial-gradient(hsl(189, 59%, 53%), hsl(189, 58%, 57%));
+  box-shadow: inset 0px -12px 0px -4px rgb(45 139 170);
+}
+#B_lizard {
+  background: -webkit-radial-gradient(hsl(261, 73%, 60%), hsl(261, 72%, 63%));
+  box-shadow: inset 0px -12px 0px -4px rgb(96 54 169);
+}
+
+#B_scissor {
+  grid-column: 1/3;
+}
+#B_spock {
+  place-self: start center;
+}
+#B_paper {
+  place-self: start center;
+}
+#B_rock {
+  place-self: end start;
+  margin-left: 20px;
+}
+#B_lizard {
+  place-self: end end;
+  margin-right: 20px;
+}
+/*design for mobile viewport*/
+@media screen and (max-width: 450px) {
+  #original,#bonus{
+    padding: 30px;
+    height: 100vh;
+  }
+  #ruleBtn {
+    right: 50%;
+    margin-bottom: 25px;
+    transform: translate(50%,50%);
+  }
+  #home {
+    top: 4px;
+    left: 2px;
+    width: 30px;
+    height: 30px;
+    padding: 1.5px;
+  }
+  #SelectGame {
+    width: 100vw;
+    height: 100vh;
+    margin: 0px;
+    border-radius: unset;
+    grid-template-columns: 1fr;
+    grid-template-rows: 100px 1fr 1fr;
+  }
+  #SelectGame h1 {
+    font-size: 32px;
+  }
+  #RPS,
+  #LPRSS {
+    grid-column: 1/2;
+    width: 90%;
+    place-self: center;
+  }
+
+  .attribution {
+    position: unset;
+    width: 100vw;
+    height: fit-content;
+    border: unset;
+    border-radius: unset;
+    color: white;
+    background-color: hsl(237, 49%, 15%);
+    animation: unset;
+    box-shadow: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    pointer-events: none;
+    box-sizing: border-box;
+  }
+  .attribution img {
+    display: none;
+  }
+ 
+  /*for Original gameplay*/
+
+  #headSec,
+  #bonusHeadSec {
+    width: 100%;
+    height: 100px;
+    margin: 0px auto 0px auto;
+    padding: 5px 15px;
+    border-radius: 7.5px;
+    box-sizing: border-box;
+  }
+  #scoreBoard p,
+  #B_scoreBoard p {
+    color: hsl(229, 64%, 46%);
+    font-size: small;
+  }
+  #headSec img {
+    height: 60%;
+  }
+
+  #bonusHeadSec img {
+    height: 80%;
+  }
+  #scoreBoard,
+  #B_scoreBoard {
+    width: 30%;
+    height: 90%;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: white;
+    font-weight: 700;
+    letter-spacing: 2px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+  #scoreBoard div,
+  #B_scoreBoard div {
+    color: hsl(229, 25%, 31%);
+    width: 100%;
+    font-weight: bolder;
+    font-size: 36px;
+  }
+  #scoreBoard p,
+  #B_scoreBoard p {
+    font-size: 12px;
+    font-weight: 700;
+  }
+  /*selection of move  section*/
+  #selectMove {
+    width: 100%;
+    height: 300px;
+    background-size: 50%;
+    background-position: 50% 50%;
+  }
+  .ring,
+.B_ring {
+  width: 100px;
+  height: 100px;
+}
+
+#rules {
+  background-color: hsl(0deg 0% 100%);
+  width: 100%;
+  height: 100%;
+  padding: 100px 0px;
+  border-radius: 0px;
+  box-sizing: border-box;
+  left: 0px;
+  top: 0px;
+  display: block;
+
+}
+#rules p {
+  text-align: center;
+  font-size: xx-large;
+  font-weight: 800;
+  margin-bottom: 50px;
+
+}
+#rules :nth-child(2){
+ margin: 25px auto;
+}
+#rules :nth-child(3){
+  display: block;
+  margin: 50px auto;
+  
+ }
+#close{
+  position: unset;
+}
+#gameActive,
+#BgameActive { 
+  width: 100%;
+  max-width: unset;
+  height: fit-content;
+  margin-top: 50px;
+  padding: 0px 0px;
+  font-size: 12px;
+  justify-content:space-between;
+  box-sizing: border-box;
+}
+#gameActive .ring,
+#BgameActive .B_ring {
+  width: 140px;
+  height: 140px;
+  padding: 12.5%;
+  margin-bottom: unset;
+  margin: 20px auto;
+  align-self: center;
+ 
+}
+#userPick, #compPick,
+#BuserPick,#BcompPick{
+  flex-direction:column-reverse;
+  position: relative;
+  padding: 0;
+}
+#userPick p,
+#compPick p,
+#BuserPick p,#BcompPick p{
+  margin-top: auto;
+  margin-bottom: unset;
+}
+#compPick,#BcompPick{
+align-items:flex-end;
+background-size: 120px;
+  background-position: 50% 50%
+}
+
+#Result,
+#bonusResult {
+  position: absolute;
+right: 50%;
+transform: translate(50%,50%);
+  bottom: -120px;
+}
+#glow {
+ 
+  width: 280px;
+  height: 280px;
+  background: -webkit-radial-gradient(
+    hsl(218, 4%, 58%) 10%,
+    hsl(221, 51%, 89%) 60%
+  );
+  opacity: 0.1;
+  border-radius: 100%;
+  position: absolute;
+  left: -75px;
+}
+#bonusSelectMove{
+  width: 100%;
+  height: 300px;
+  background-size: 70%;
+  padding: 0;
+  margin-top: 50px;
+  grid-column-gap:30px ;
+ 
+}
+.B_ring{
+  padding: 15px;
+}
+#B_scissor {
+  grid-column: 1/3;
+  padding: 15px;
+}
+#B_spock {
+  place-self: start start;
+}
+#B_paper {
+  place-self: start end;
+}
+#B_rock {
+  place-self: end start;
+  margin-left: 0px;
+  margin-top: 10px;
+}
+#B_lizard {
+  place-self: end end;
+  margin-right: 0px;
+  margin-top: 10px;
+}
+
+}
